@@ -1,7 +1,16 @@
-import rock from './assets/rock.svg';
+import rockImg from './assets/rock.svg';
+import scissorImg from './assets/scissor.svg';
+import paperImg from './assets/paper.svg';
 
-function HandIcon(){
-    return <img src={rock} alt="바위"/>
+const handImg = {
+    rock : rockImg,
+    scissor : scissorImg,
+    paper : paperImg
+};
+
+function HandIcon({value}){
+    const src = handImg[value];
+    return <img src={src} alt={value}/>
 }
 
 export default HandIcon;
