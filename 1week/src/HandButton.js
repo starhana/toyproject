@@ -1,11 +1,13 @@
 import HandIcon from './HanIcon';
 
 
-function HandButton({value, onClick }) {
-    //const handleClick = () => onClick(value); 화살표 축약
+function HandButton({value, onClick}) {
+    //const handleClick = (value) => console.log(value); 화사표 축약
     const handleClick = function() {
         onClick(value);
-      };
+        //onClick에 value전달
+    };
+
     return (
       <button onClick={handleClick}>
         <HandIcon value={value} />
