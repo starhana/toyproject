@@ -21,7 +21,7 @@ function getResult(left, right){
 getResult(me, other);
 
 function handleClick(){
-  console.log("가위 바위 보!");
+  console.log("가위 바위 보!!");
 }
 
 ReactDOM.render(
