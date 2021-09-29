@@ -1,14 +1,15 @@
 import { Fragment } from 'react';
 import ReactDOM from 'react-dom';
+import App from './App';
 
-let wins = { 
+const wins = { 
   rock: 'scissor', //주먹 > 가위
   scissor: 'paper', //가위 > 보
   paper: 'rock', //보 >주먹
 }
 
-let me = "rock";
-let other = "scissor";
+const me = "rock";
+const other = "scissor";
 
 function getResult(left, right){
   if(wins[left] === right){
@@ -25,12 +26,14 @@ function handleClick(){
 }
 
 ReactDOM.render(
-  <Fragment>
+  <App/> //컴퍼넌트 태그 형태로
+  /*<Fragment>
     <h1>가위바위보</h1>
     <h2>{getResult(me, other)}</h2>
     <button onClick={handleClick}>가위</button>
     <button onClick={handleClick}>바위</button>
     <button onClick={handleClick}>보</button>
-  </Fragment>
+  </Fragment>*/
+  
   ,document.getElementById('root')
 );
