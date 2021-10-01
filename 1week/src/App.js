@@ -23,15 +23,14 @@ function App(){
         const nextNum = random(6);//1~6까지 랜덤
         setNum(nextNum);
         setSum(sum + nextNum);
-        // const prevHistory = gameHistory;
-        // gameHistory.push(nextNum);
-        // console.log(prevHistory === gameHistory);
-        setGameHistory([...gameHistory, nextNum]);
+        setGameHistory([...gameHistory, nextNum]); //→ 참조형 state
+        //참조형 타입의state를 변경 할때 스프레드 문법 활용 하면 쉬움
+        //Spread(스프레드) 문법 : 배열을 펼쳐서 개별적인 값들의 목록으로 만드는 것.
     }
     const handleClearClick = () =>{
         setNum(1);//파라미터로 전달값 1로 변경
-        setSum(0);//파라미터로 전달값 1로 변경
-        setGameHistory([]);
+        setSum(0);//파라미터로 전달값 0로 변경
+        setGameHistory([]);//파라미터로 전달값 빈배열[]로 변경
     }
 
     return ( //return문을 소괄호()로 감싸면 여러줄 쓸 수 있음
