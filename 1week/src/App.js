@@ -1,6 +1,5 @@
 import {useState} from 'react';
-import Dice from './Dice';
-import HandIcon from './HanIcon'
+import Board from './Board';
 import Button from './Button';
 
 function random(n){
@@ -8,50 +7,40 @@ function random(n){
 }
 
 function App(){
-    const handleClick = function(value) {
-        console.log(value);
-        //HandButton.js에 있는 handleClick실행
-    };
-    const [num, setNum] = useState(1);
-    const [sum, setSum] = useState(0);//합계
+    //const [num, setNum] = useState(1);
+    //const [sum, setSum] = useState(0);//합계
     //useState : 파라미터로 초기값(useState(1)) 전달 받음
     //num(State값) : 현재 변수의 값(처음에는useState변수를 호출 할 때 전달한 초기값)
     //setNum : 파라미터로 전달하는 값
-    const [gameHistory, setGameHistory] = useState([]);
+    //const [gameHistory, setGameHistory] = useState([]); 아래로 변경
+    const [myHistory, setMyHistory] = useState([]);
+    const [otherHistory, setOtherHistory] = useState([]);
 
     const handleRollClick = () =>{
-        const nextNum = random(6);//1~6까지 랜덤
-        setNum(nextNum);
-        setSum(sum + nextNum);
-        setGameHistory([...gameHistory, nextNum]); //→ 참조형 state
+        const nextMyNum = random(6);//1~6까지 랜덤
+        const nextOtherNum = random(6);
+       
+        setMyHistory([...myHistory, nextMyNum]); //→ 참조형 state
         //참조형 타입의state를 변경 할때 스프레드 문법 활용 하면 쉬움
         //Spread(스프레드) 문법 : 배열을 펼쳐서 개별적인 값들의 목록으로 만드는 것.
+        setOtherHistory([...otherHistory, nextOtherNum]);
     }
     const handleClearClick = () =>{
-        setNum(1);//파라미터로 전달값 1로 변경
-        setSum(0);//파라미터로 전달값 0로 변경
-        setGameHistory([]);//파라미터로 전달값 빈배열[]로 변경
+        setMyHistory([]);//파라미터로 전달값 빈배열[]로 변경
+        setOtherHistory([]);
     }
 
-    return ( //return문을 소괄호()로 감싸면 여러줄 쓸 수 있음
-        //props : 리액트 컴포넌트에 지정한 속성(전달된 속성 모두)
-        //prop : 리액트 컴포넌트에 지정한 각각의 속성
+    return ( 
         <div>
             <div>
-                <Button onClick={handleRollClick}>던지기</Button>
-                <Button onClick={handleClearClick}>처음부터</Button>
+                <div>
+                    <Button onClick={handleRollClick}>던지기</Button>
+                    <Button onClick={handleClearClick}>처음부터</Button>
+                </div>
             </div>
-            <div>
-                <h2>한별</h2>
-                <Dice color="red" num={num}/>
-                <h2>총점</h2>
-                <p>{sum}</p>
-                <h2>기록</h2>
-                <p>{gameHistory.join(', ')}</p>
-            </div>
+            <Board name="한별" color="blue" gameHistory={myHistory}/>
+            <Board name="상대" color="red" gameHistory={otherHistory}/>
         </div>
-        //join : 배열의 원소들을 연결하여 하나의 값(문장)으로 만듬
-        
     );
 }
 
