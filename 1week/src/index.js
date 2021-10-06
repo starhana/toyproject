@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import './index.css';
 
 const wins = { 
   rock: 'scissor', //주먹 > 가위

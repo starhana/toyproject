@@ -1,0 +1,9 @@
+.Button {width:185px;padding:14px 27px;border-radius:30px;font-size:20px;font-weight:bold;cursor:pointer;}
+.Button.blue {background-color:rgba(123, 134, 155, 0.2);border:1px solid #7090ff;color:#7090ff;}
+.Button.red {background-color:rgba(255, 78, 78, .2);border:1px solid #ff4664;color:#ff4664;}
+
+
+
+
+
+

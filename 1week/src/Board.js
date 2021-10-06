@@ -1,4 +1,5 @@
 import Dice from './Dice';
+import './Board.css';
 
 function Board({name, color, gameHistory}){
     const num = gameHistory[gameHistory.length - 1] || 1;
@@ -7,13 +8,13 @@ function Board({name, color, gameHistory}){
    return ( //return문을 소괄호()로 감싸면 여러줄 쓸 수 있음
         //props : 리액트 컴포넌트에 지정한 속성(전달된 속성 모두)
         //prop : 리액트 컴포넌트에 지정한 각각의 속성
-        <div>
+        <div className="board winner">
             <h2>{name}</h2>
             <Dice color={color} num={num}/>
             <h2>총점</h2>
             <p>{sum}</p>
             <h2>기록</h2>
-            <p>{gameHistory.join(', ')}</p>
+            <p className="history">{gameHistory.join(', ')}</p>
         </div>
         //join : 배열의 원소들을 연결하여 하나의 값(문장)으로 만듬
         
