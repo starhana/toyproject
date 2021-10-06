@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+
 import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
@@ -21,10 +21,6 @@ function getResult(left, right){
 
 }
 getResult(me, other);
-
-function handleClick(){
-  console.log("가위 바위 보!");
-}
 
 ReactDOM.render(
   <App/> //컴퍼넌트 태그 형태로

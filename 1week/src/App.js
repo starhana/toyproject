@@ -26,6 +26,7 @@ function App(){
         //Spread(스프레드) 문법 : 배열을 펼쳐서 개별적인 값들의 목록으로 만드는 것.
         setOtherHistory([...otherHistory, nextOtherNum]);
     }
+    
     const handleClearClick = () =>{
         setMyHistory([]);//파라미터로 전달값 빈배열[]로 변경
         setOtherHistory([]);
@@ -37,8 +38,8 @@ function App(){
                 <Board name="user1" color="blue" gameHistory={myHistory}/>
                 <div className="buttonBox">
                     <div className="buttonContain">
-                        <Button className="App-button" color="blue" onClick={handleRollClick}>던지기</Button>
                         <Button className="App-button" color="red" onClick={handleClearClick}>처음부터</Button>
+                        <Button className="App-button" color="blue" onClick={handleRollClick}>던지기</Button>
                     </div>
                 </div>
                 <Board name="user2" color="red" gameHistory={otherHistory}/>
