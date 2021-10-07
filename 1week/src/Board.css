@@ -1,5 +1,5 @@
 .board{display:inline-block;width:340px;height:500px;padding:20px;text-align:center;border:5px solid #9966FF;background-color:rgba(153, 102, 255, 0.2);border-radius:25px;box-sizing: border-box;}
 
 .history{line-height:1.5;letter-spacing:-.02em;}
-.winner{border:5px solid #FFFF33;}
+.winner{border:5px solid #ffff00;}
 .loser{border:5px solid transparent;}

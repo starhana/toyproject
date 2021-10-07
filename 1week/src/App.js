@@ -16,6 +16,7 @@ function App(){
     //const [gameHistory, setGameHistory] = useState([]); 아래로 변경
     const [myHistory, setMyHistory] = useState([]);
     const [otherHistory, setOtherHistory] = useState([]);
+    const [isPlaying, setIsPlaying] = useState(true); // 게임 진행 상태
 
     const handleRollClick = () =>{
         const nextMyNum = random(6);//1~6까지 랜덤
@@ -30,19 +31,33 @@ function App(){
     const handleClearClick = () =>{
         setMyHistory([]);//파라미터로 전달값 빈배열[]로 변경
         setOtherHistory([]);
+
+        if(buttonClass.includes('noneAction') == true){
+            buttonClass.splice(buttonClass.indexOf("noneAction"),1); 
+            console.log(buttonClass);
+        }
     }
 
+    const handleIsPlayingChange = (bool) => { // 게임 진행 상태를 변경하는 핸들러
+        setIsPlaying(bool);
+    }
+
+    const buttonClass = ['App-button']
+    if(isPlaying == false){
+        buttonClass.push('noneAction');
+    }
+    
     return ( 
         <div className="App">
             <div>
-                <Board name="user1" color="blue" gameHistory={myHistory}/>
+                <Board isPlaying={isPlaying} onGameFinish={handleIsPlayingChange} name="user1" color="blue" gameHistory={myHistory}/>
                 <div className="buttonBox">
                     <div className="buttonContain">
-                        <Button className="App-button" color="red" onClick={handleClearClick}>처음부터</Button>
-                        <Button className="App-button" color="blue" onClick={handleRollClick}>던지기</Button>
+                        <Button className='App-button' color="red" onClick={handleClearClick}>처음부터</Button>
+                        <Button className={buttonClass.join(' ')} color="blue" onClick={handleRollClick}>던지기</Button>
                     </div>
                 </div>
-                <Board name="user2" color="red" gameHistory={otherHistory}/>
+                <Board isPlaying={isPlaying} onGameFinish={handleIsPlayingChange} name="user2" color="red" gameHistory={otherHistory}/>
             </div>
         </div>
     );

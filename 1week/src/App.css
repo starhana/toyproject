@@ -7,3 +7,5 @@
 .buttonBox{display:inline-block;position:relative;padding:0 125px;text-align:center;}
 .buttonBox .buttonContain{position:absolute;;top:50%;left:50%;transform:translate(-50%, -50%);}
 .buttonBox .App-button:first-child{margin-bottom:20px;}
+
+.noneAction{pointer-events : none;}
