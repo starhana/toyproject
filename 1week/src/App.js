@@ -17,6 +17,7 @@ function App(){
     const [myHistory, setMyHistory] = useState([]);
     const [otherHistory, setOtherHistory] = useState([]);
     const [isPlaying, setIsPlaying] = useState(true); // 게임 진행 상태
+    const [disabled, setDisabled] = useState('App-button');
 
     const handleRollClick = () =>{
         const nextMyNum = random(6);//1~6까지 랜덤
@@ -26,27 +27,32 @@ function App(){
         //참조형 타입의state를 변경 할때 스프레드 문법 활용 하면 쉬움
         //Spread(스프레드) 문법 : 배열을 펼쳐서 개별적인 값들의 목록으로 만드는 것.
         setOtherHistory([...otherHistory, nextOtherNum]);
+        console.log(setDisabled);
     }
     
     const handleClearClick = () =>{
         setMyHistory([]);//파라미터로 전달값 빈배열[]로 변경
         setOtherHistory([]);
-
+/*
         if(buttonClass.includes('noneAction') == true){
             buttonClass.splice(buttonClass.indexOf("noneAction"),1); 
             console.log(buttonClass);
-        }
+        }*/
+
+        
     }
 
     const handleIsPlayingChange = (bool) => { // 게임 진행 상태를 변경하는 핸들러
         setIsPlaying(bool);
     }
 
-    const buttonClass = ['App-button']
-    if(isPlaying == false){
-        buttonClass.push('noneAction');
-    }
     
+    const handleNoneAction = () =>{
+        if(isPlaying == false){
+            setDisabled([... 'noneAction']);
+        }
+    }
+
     return ( 
         <div className="App">
             <div>
@@ -54,7 +60,7 @@ function App(){
                 <div className="buttonBox">
                     <div className="buttonContain">
                         <Button className='App-button' color="red" onClick={handleClearClick}>처음부터</Button>
-                        <Button className={buttonClass.join(' ')} color="blue" onClick={handleRollClick}>던지기</Button>
+                        <Button className={handleNoneAction} color="blue" onClick={handleRollClick}>던지기</Button>
                     </div>
                 </div>
                 <Board isPlaying={isPlaying} onGameFinish={handleIsPlayingChange} name="user2" color="red" gameHistory={otherHistory}/>
