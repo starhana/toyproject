@@ -32,12 +32,13 @@ function App(){
     const handleClearClick = () =>{
         setMyHistory([]);//파라미터로 전달값 빈배열[]로 변경
         setOtherHistory([]);  
-
+        setIsPlaying([true]);
         if(disabled.includes('noneAction') == true){
-            console.log(disabled.indexOf('noneAction')); // ->1
-            console.log(disabled);
+            //console.log(disabled.indexOf('noneAction')); // ->1
+            //console.log(disabled);
             disabled.splice(disabled.indexOf('noneAction'),1);
             setDisabled([]);
+            //console.log(isPlaying);
         }
     }
 
