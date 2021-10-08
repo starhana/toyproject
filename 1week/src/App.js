@@ -34,7 +34,10 @@ function App(){
         setOtherHistory([]);  
 
         if(disabled.includes('noneAction') == true){
+            console.log(disabled.indexOf('noneAction')); // ->1
+            console.log(disabled);
             disabled.splice(disabled.indexOf('noneAction'),1);
+            setDisabled([]);
         }
     }
 
@@ -57,7 +60,7 @@ function App(){
                 <div className="buttonBox">
                     <div className="buttonContain">
                         <Button className='App-button' color="red" onClick={handleClearClick}>처음부터</Button>
-                        <Button className={disabled.join(', ')} color="blue" onClick={handleRollClick}>던지기</Button>
+                        <Button className={disabled.join(' ')} color="blue" onClick={handleRollClick}>던지기</Button>
                     </div>
                 </div>
                 <Board isPlaying={isPlaying} onGameFinish={handleIsPlayingChange} name="user2" color="red" gameHistory={otherHistory}/>
